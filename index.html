@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Budget & Expense Tracker</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">💸 BudgetTracker</div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+      <button id="theme-toggle">🌙</button>
+    </nav>
+  </header>
+
+  <!-- Main -->
+  <main id="home">
+    <section class="tracker-container">
+      <h1>Budget & Expense Tracker</h1>
+      <p>Track your income, expenses, and savings step by step!</p>
+
+      <!-- Step Tabs -->
+      <div id="step-tabs" class="step-tabs"></div>
+
+      <!-- Progress Bar -->
+      <div class="progress-container">
+        <div id="progress-bar"></div>
+      </div>
+
+      <!-- Wizard -->
+      <div id="wizard">
+        <!-- Step 1 -->
+        <div class="step active">
+          <h2>Step 1: Enter Monthly Income</h2>
+          <input type="number" id="income-input" placeholder="Enter income">
+          <div class="nav-buttons">
+            <button onclick="nextStep()">Next ➡️</button>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step">
+          <h2>Step 2: Add Expenses</h2>
+          <input type="text" id="expense-name" placeholder="Expense name">
+          <input type="number" id="expense-amount" placeholder="Amount">
+          <button onclick="addExpense()">Add Expense</button>
+          <div class="nav-buttons">
+            <button onclick="prevStep()">⬅️ Back</button>
+            <button onclick="nextStep()">Next ➡️</button>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step">
+          <h2>Step 3: Expense List</h2>
+          <table>
+            <thead>
+              <tr><th>Name</th><th>Amount</th></tr>
+            </thead>
+            <tbody id="expense-list"></tbody>
+          </table>
+          <div class="nav-buttons">
+            <button onclick="prevStep()">⬅️ Back</button>
+            <button onclick="nextStep()">Next ➡️</button>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="step">
+          <h2>Step 4: Savings</h2>
+          <p id="savings-display">Your savings will appear here.</p>
+          <div class="nav-buttons">
+            <button onclick="prevStep()">⬅️ Back</button>
+            <button onclick="nextStep()">Next ➡️</button>
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="step">
+          <h2>Step 5: Expense Breakdown</h2>
+          <canvas id="expense-chart"></canvas>
+          <div class="nav-buttons">
+            <button onclick="prevStep()">⬅️ Back</button>
+            <button onclick="nextStep()">Next ➡️</button>
+          </div>
+        </div>
+
+        <!-- Step 6 -->
+        <div class="step">
+          <h2>Step 6: Insights</h2>
+          <p id="insights">Insights will appear here.</p>
+          <div class="nav-buttons">
+            <button onclick="prevStep()">⬅️ Back</button>
+            <button onclick="nextStep()">Next ➡️</button>
+          </div>
+        </div>
+
+        <!-- Step 7 -->
+        <div class="step">
+          <h2>Step 7: Export / Reset</h2>
+          <button onclick="exportData()">Export Data</button>
+          <button onclick="resetData()">Reset All</button>
+          <div class="nav-buttons">
+            <button onclick="prevStep()">⬅️ Back</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Features -->
+  <!-- <section id="features" class="info-section">
+    <h2>Features</h2>
+    <ul>
+
+    </ul>
+  </section> -->
+
+    <!-- Features -->
+  <section id="features" class="info-section">
+    <h2>Why Track Expenses & Save?</h2>
+
+    <div class="feature reveal">
+      <h3>📊 Track Every Expense</h3>
+      <p>
+        Keeping a record of your expenses gives you a clear picture of where your money is going. 
+        Small daily spends like coffee or snacks can add up quickly without you even noticing. 
+        Tracking helps you find patterns and cut down on unnecessary costs.
+      </p>
+    </div>
+
+    <div class="feature reveal">
+      <h3>💡 Understand Your Spending Habits</h3>
+      <p>
+        By categorizing expenses into food, rent, shopping, entertainment, etc., 
+        you’ll discover which areas take most of your income. 
+        This awareness is the first step toward making smarter financial decisions.
+      </p>
+    </div>
+
+    <div class="feature reveal">
+      <h3>💰 Build Savings Step by Step</h3>
+      <p>
+        Savings don’t happen magically. Setting aside a portion of your income 
+        each month ensures you are prepared for emergencies, investments, 
+        and future goals. Even small amounts saved regularly grow big over time.
+      </p>
+    </div>
+
+    <div class="feature reveal">
+      <h3>⚠️ Avoid Overspending</h3>
+      <p>
+        Without proper tracking, it’s easy to spend more than you earn. 
+        Overspending often leads to debt and financial stress. 
+        Tracking with insights gives you early warnings before it’s too late.
+      </p>
+    </div>
+
+    <div class="feature reveal">
+      <h3>🌱 Financial Freedom</h3>
+      <p>
+        Proper expense management and disciplined savings put you on the path to financial freedom. 
+        You’ll have control over your money instead of money controlling you. 
+        A little effort now secures peace of mind later.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- About -->
+  <section id="about" class="info-section">
+    <h2>About</h2>
+    <p>This tracker helps you manage income, expenses, and savings in a guided flow.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 BudgetTracker | Made with ❤️</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

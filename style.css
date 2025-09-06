@@ -1,0 +1,157 @@
+/* Core Variables */
+:root {
+  --bg-color: #fdfdfd;
+  --text-color: #222;
+  --card-bg: #ffffff;
+  --accent: #6c5ce7;
+}
+body.dark {
+  --bg-color: #1e1e2f;
+  --text-color: #fdfdfd;
+  --card-bg: #2d2d44;
+  --accent: #a29bfe;
+}
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--bg-color);
+  color: var(--text-color);
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Navbar */
+header {
+  background: var(--card-bg);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+}
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+#theme-toggle {
+  background: var(--accent);
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Tracker */
+.tracker-container {
+  max-width: 700px;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+/* Step Tabs */
+.step-tabs {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+}
+.step-tabs button {
+  flex: 1;
+  padding: 0.6rem;
+  margin: 0 0.2rem;
+  border: none;
+  border-radius: 8px;
+  background: var(--card-bg);
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+.step-tabs button.active {
+  background: var(--accent);
+  color: white;
+}
+
+/* Progress Bar */
+.progress-container {
+  width: 100%;
+  background: #ddd;
+  height: 6px;
+  border-radius: 6px;
+  margin: 1rem 0;
+}
+#progress-bar {
+  height: 6px;
+  width: 0;
+  background: var(--accent);
+  border-radius: 6px;
+  transition: width 0.4s ease;
+}
+
+/* Steps */
+.step {
+  background: var(--card-bg);
+  padding: 1.5rem;
+  margin: 1rem 0;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  display: none;
+  animation: fadeIn 0.5s ease;
+}
+.step.active { display: block; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+input, button {
+  padding: 0.6rem;
+  margin: 0.4rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+button {
+  background: var(--accent);
+  color: white;
+}
+button:hover { background: #5a4bd9; }
+
+table { width: 100%; border-collapse: collapse; }
+th, td {
+  padding: 0.6rem;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Info & Footer */
+.info-section { max-width: 900px; margin: 2rem auto; text-align: center; }
+footer { text-align: center; padding: 1rem; background: var(--card-bg); }
+
+
+/* Features Section */
+.feature {
+  background: var(--card-bg);
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  max-width: 800px;
+  text-align: left;
+  line-height: 1.6;
+  transform: translateY(30px);
+  opacity: 0;
+  transition: all 0.7s ease;
+}
+.feature h3 {
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+.feature.show {
+  transform: translateY(0);
+  opacity: 1;
+}
