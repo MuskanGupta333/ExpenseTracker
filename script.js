@@ -138,3 +138,27 @@ function revealOnScroll() {
   }
 }
 window.addEventListener("scroll", revealOnScroll);
+
+window.onload = () => {
+  income = parseFloat(localStorage.getItem("income")) || 0;
+  expenses = JSON.parse(localStorage.getItem("expenses")) || [];
+
+  // Show saved income in the input field
+  if (income > 0) {
+    document.getElementById("income-input").value = income;
+  }
+
+  updateExpenseList();
+  updateSavings();
+  if (expenses.length) updateChart();
+
+  // Theme restore
+  const theme = localStorage.getItem("theme");
+  if (theme === "dark") {
+    document.body.classList.add("dark");
+    document.getElementById("theme-toggle").textContent = "☀️";
+  }
+
+  createTabs();
+  showStep(currentStep);
+};
